@@ -1,0 +1,118 @@
+/* Main Container */
+.dashboard-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fbff;
+}
+
+/* Section Title */
+.section-title {
+  color: #343C6A;
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.tapdrop-card {
+  background: linear-gradient(135deg, #d6f0ff, #ffffff);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;          /* or auto if image height determines size */
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  padding: 0;             /* remove padding so image fills the card */
+}
+
+.tapdrop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* ensures full coverage without distortion */
+  display: block;
+  border-radius: inherit; /* optional: inherit card’s rounding */
+}
+
+
+/* Grid for Bottom Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Recent Transactions */
+.recent-transactions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-transactions li {
+  background-color: #f1f5ff;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+/* Active Vending Machines */
+.active-vending .water-level {
+  margin-top: 1rem;
+}
+
+.level-bar {
+  background: #e0e0e0;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.level-bar .fill {
+  background: #00b0ff;
+  height: 100%;
+  border-radius: 6px 0 0 6px;
+}
+
+/* Online Status */
+.status.online {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #00c853;
+}
+
+/* Total Income */
+.total-income .income-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.income-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 8px solid #2196f3;
+  border-top-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.income-circle .amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+}

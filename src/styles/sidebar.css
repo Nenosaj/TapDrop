@@ -1,0 +1,66 @@
+.sidebar-container {
+  width: 200px;
+  background: #fff; 
+  color: #343C6A;  
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  width: 200px;  /* Adjust size as needed */
+  margin-bottom: 20px;
+  display: block;
+}
+
+.transaction,
+.dashboard,
+.account {
+  color: #B1B1B1; /* default text color */
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.transaction.active,
+.dashboard.active,
+.account.active {
+  color: #2D60FF; /* active text color */
+}
+
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: #B1B1B1;
+  transition: color 0.3s ease;
+  margin-right: 8px;
+
+}
+
+nav {
+  display: block;            
+  align-items: center;      
+  gap: 10px;                
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.dashboard.active .icon,
+.transaction.active .icon,
+.account.active .icon {
+  color: #2D60FF;
+}
+
+/* Optional: add hover effect */
+.transaction:hover,
+.dashboard:hover,
+.account:hover {
+  color: #2D60FF;
+  cursor: pointer;
+}
