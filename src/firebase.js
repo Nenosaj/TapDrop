@@ -1,9 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from "firebase/database";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBHhYj4pQ6wWYbLFuSa80yJ5PBHGlgMJ-Q",
   authDomain: "water-vendo-gcash.firebaseapp.com",
+  databaseURL: "https://water-vendo-gcash-default-rtdb.firebaseio.com/",
   projectId: "water-vendo-gcash",
   storageBucket: "water-vendo-gcash.firebasestorage.app",
   messagingSenderId: "353067031897",
@@ -13,4 +16,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+export { database };

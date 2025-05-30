@@ -1,7 +1,7 @@
 /* VendoDashboard.css */
 .dashboard-container {
   font-family: 'Segoe UI', sans-serif;
-  padding: 20px;
+  padding: 10px;
   background-color: #fafafa;
 }
 
@@ -24,10 +24,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
   border-radius: 20px;
   width: 200px;
   text-align: justify;
+  margin-right: 100px;
+
 }
 
 .status-card.active {
@@ -63,15 +65,16 @@
   align-items: center;
   margin-bottom: 30px;
   background-color: #ffffff;
-  padding: 30px;
+  padding: 0px;
   border-radius: 30px;
 
 }
 
 .container-img {
-  width: 140px;
-  height: auto;
+  width: auto;
+  height: 400px;
   margin-right: 100px;
+
 }
 
 
@@ -99,32 +102,55 @@
   font-weight: bold;
 }
 
+.animated-water-icon .wave {
+  animation: waveMove 2s infinite ease-in-out alternate;
+  transform-origin: center;
+  position: relative;
+}
+
+.wave1 {
+  animation-delay: 0s;
+}
+
+.wave2 {
+  animation-delay: 2s;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(5px) scaleX(1.02);
+  }
+}
+
 
 .water-level {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  padding: 10px;
+  background-color: #f2faff;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
 }
 
-.level-circle {
-  background-color: #ccf1ff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
+.water-level .level {
+  font-weight: 600;
+  color: #0078b7;
+  font-size: 16px;
 }
 
 .water-info {
   display: flex;
-  justify-content: space-between;
-  width: 100px;
+  gap: 10px;
   font-size: 14px;
-  color: #333;
+  font-weight: 500;
+  color: #1a1a1a;
 }
+
 
 .income-box {
   padding: 20px;
