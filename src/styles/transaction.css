@@ -1,0 +1,126 @@
+.transaction-container {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
+  background-color: #f9fbfc;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.income-card {
+  display: flex;
+  align-items: center;
+  background-color: #e7f6ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.income-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.income-title {
+  font-size: 1rem;
+  color: #6aa9cd;
+}
+
+.income-amount {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.income-breakdown {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.system-title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.system-sub {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.system-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.system-amount {
+  font-size: 1rem;
+  color: #00aa6c;
+  margin-top: 0.5rem;
+}
+
+.recent-section {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.transaction-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.transaction-tab {
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+}
+
+.transaction-tab.active {
+  color: #0040ff;
+  border-bottom: 2px solid #0040ff;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-amount {
+  color: #00aa6c;
+  font-weight: 600;
+}
+
+.transaction-pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.transaction-pagination span {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #0040ff;
+}
+
+.transaction-active-page {
+  background-color: #0040ff;
+  color: white;
+}

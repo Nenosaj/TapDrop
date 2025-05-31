@@ -8,7 +8,7 @@ function generateWaterLevel() {
 }
 
 function updateWaterLevel() {
-  const waterRef = ref(database, 'sensor/waterLevel');
+  const waterRef = ref(database, 'system1/waterLevel');
   const level = generateWaterLevel();
   console.log("Updating water level to:", level);
 

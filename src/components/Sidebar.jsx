@@ -13,7 +13,7 @@ function Sidebar() {
     <div className="sidebar-container">
       <img src={logo} alt="Water Vendo Logo" className="logo" />
       <nav>
-        <NavLink to="/" className={({ isActive }) => isActive ? "dashboard active" : "dashboard"}>
+        <NavLink to="/dashboard" className={({ isActive }) => isActive ? "dashboard active" : "dashboard"}>
           <DashboardIcon className="icon" />
           Dashboard
         </NavLink>

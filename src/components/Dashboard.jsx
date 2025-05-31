@@ -1,61 +1,71 @@
 import '../styles/dashboard.css';    
 import banner from '../assets/tapbanner.svg'; 
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { firedb } from '../firebase'; // Ensure this points to Firestore init
 
+function Dashboard() {
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
- function Dashboard() {
+  useEffect(() => {
+    async function fetchTransactions() {
+      try {
+        const snapshot = await getDocs(collection(firedb, 'logs'));
+        const data = snapshot.docs.map(doc => {
+          const t = doc.data();
+          return {
+            type: t.source || "Unknown",
+            system: t.system || "Unknown",
+            date: t.timestamp || "Unknown",
+            amount: 1 // ESP32 only logs, so fixed value
+          };
+        });
+
+        // Sort by timestamp string (fallback sorting by Firestore ID millis)
+        const sorted = [...data].sort((a, b) => {
+          return b.date.localeCompare(a.date);
+        });
+
+        setTransactions(sorted);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error loading dashboard data:", err);
+        setLoading(false);
+      }
+    }
+
+    fetchTransactions();
+  }, []);
+
+  const totalIncome = transactions.reduce((sum, tx) => sum + tx.amount, 0);
+  const recent = transactions.slice(0, 3); // Top 3 recent
+
+  if (loading) return <div className="dashboard-container"><p>Loading dashboard...</p></div>;
+
   return (
     <div className="dashboard-container">
-      {/* Title */}
       <h2 className="section-title">System Overview</h2>
 
-        {/* Top Card - TapDrop Banner */}
       <div className="tapdrop-card">
-        <img
-          src={banner}
-          alt="TapDrop Banner"
-          className="tapdrop-image"
-        />
+        <img src={banner} alt="TapDrop Banner" className="tapdrop-image" />
       </div>
-      {/* Bottom Grid - 3 Cards */}
+
       <div className="card-grid">
 
-         {/* Recent Transactions */}
+        {/* Recent Transactions */}
         <div className="card recent-transactions">
-          <h3>Recent Transaction</h3>
+          <h3>Recent Transactions</h3>
           <ul>
-            <li>
-              <div className="txn-type">Dispensed thru Gcash</div>
-              <div className="txn-meta">08/05/25 at 13:01</div>
-              <div className="txn-amount">₱1</div>
-            </li>
-            <li>
-              <div className="txn-type">Dispensed thru Coin</div>
-              <div className="txn-meta">08/05/25 at 12:01</div>
-              <div className="txn-amount">₱1</div>
-            </li>
-            <li>
-              <div className="txn-type">Dispensed thru Gcash</div>
-              <div className="txn-meta">08/05/25 at 11:11</div>
-              <div className="txn-amount">₱1</div>
-            </li>
+            {recent.map((tx, idx) => (
+              <li key={idx}>
+                <div className="txn-type">Dispensed thru {tx.type}</div>
+                <div className="txn-meta">{tx.date}</div>
+                <div className="txn-amount">₱{tx.amount}</div>
+              </li>
+            ))}
+            {recent.length === 0 && <li>No transactions yet.</li>}
           </ul>
-        </div>
-
-        {/* Active Vending Machines */}
-        <div className="card active-vending">
-          <h3>Active Vending Machines</h3>
-          <div className="vending-info">
-            <p><strong>2</strong> Active Vendo</p>
-            <p>System 1</p>
-            <div className="water-level">
-              <div className="water-label">Water Level</div>
-              <div className="level-bar">
-                <div className="fill" style={{ width: '10%' }} />
-              </div>
-              <div className="level-value">100ml - 10%</div>
-            </div>
-            <div className="status online">Active Status: Online</div>
-          </div>
         </div>
 
         {/* Total Income */}
@@ -63,14 +73,14 @@ import banner from '../assets/tapbanner.svg';
           <h3>Total Income</h3>
           <div className="income-chart">
             <div className="income-circle">
-              <span className="amount">₱140</span>
+              <span className="amount">₱{totalIncome}</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
 }
-
 
 export default Dashboard;
