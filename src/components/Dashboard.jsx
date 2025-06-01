@@ -4,6 +4,17 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firedb } from '../firebase'; // Ensure this points to Firestore init
 
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from 'recharts';
+
+
 function Dashboard() {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,6 +52,20 @@ function Dashboard() {
   const totalIncome = transactions.reduce((sum, tx) => sum + tx.amount, 0);
   const recent = transactions.slice(0, 3); // Top 3 recent
 
+  // Count transactions by system
+  // Count transactions by system
+const systemCounts = transactions.reduce((acc, tx) => {
+  acc[tx.system] = (acc[tx.system] || 0) + 1;
+  return acc;
+}, {});
+
+// Prepare data for the chart
+const systemChartData = Object.entries(systemCounts).map(([system, count]) => ({
+  system,
+  transactions: count
+}));
+
+
   if (loading) return <div className="dashboard-container"><p>Loading dashboard...</p></div>;
 
   return (
@@ -77,6 +102,25 @@ function Dashboard() {
             </div>
           </div>
         </div>
+
+     {/* System Usage Chart */}
+<div className="card system-chart">
+  <h3>System Usage</h3>
+  {systemChartData.length > 0 ? (
+    <ResponsiveContainer width="100%" height={250}>
+      <BarChart data={systemChartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="system" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="transactions" fill="#1a27ff" radius={[4, 4, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  ) : (
+    <p>No data yet</p>
+  )}
+</div>
+
 
       </div>
     </div>

@@ -1,5 +1,5 @@
 .sidebar-container {
-  width: 200px;
+  width: 250px;
   background: #fff; 
   color: #343C6A;  
   padding: 20px;
@@ -63,4 +63,22 @@ nav {
 .account:hover {
   color: #2D60FF;
   cursor: pointer;
+}
+
+.logout {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.logout:hover {
+  background-color: #f44336; /* red on hover */
+  color: white;
+  border-radius: 5px;
 }

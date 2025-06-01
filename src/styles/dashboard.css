@@ -86,33 +86,48 @@
   border-radius: 6px 0 0 6px;
 }
 
-/* Online Status */
-.status.online {
-  margin-top: 1rem;
-  font-weight: 600;
-  color: #00c853;
-}
-
 /* Total Income */
 .total-income .income-chart {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 150px;
 }
 
 .income-circle {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 8px solid #2196f3;
-  border-top-color: #e0e0e0;
+  background: conic-gradient(#2196f3 75%, #e0e0e0 0%);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.income-circle::before {
+  content: "";
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .income-circle .amount {
-  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
   font-weight: 700;
+  color: #0d47a1;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.system-chart {
+  background-color: #f4f7fe;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(26, 39, 255, 0.05);
 }

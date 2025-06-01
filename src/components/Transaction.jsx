@@ -77,7 +77,7 @@ function Transaction() {
         <div>
           <div className="system-title">System 1</div>
           <div className="system-amount">₱{
-            allTransactions.filter(tx => tx.system === "System1").length
+            allTransactions.filter(tx => tx.system === "System 1").length
           }</div>
         </div>
         <div>

@@ -4,10 +4,10 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Transaction from './components/Transaction';
 import YourVendo from './components/YourVendo';
+import PrivateRoute from './components/PrivateRoute';
 
 function AppContent() {
   const location = useLocation();
-  // Hide the sidebar if the current path is exactly "/"
   const hideSidebar = location.pathname === '/';
 
   return (
@@ -15,13 +15,34 @@ function AppContent() {
       {!hideSidebar && <Sidebar />}
       <div style={{ flex: 1, padding: '20px' }}>
         <Routes>
-          {/* Login route (no sidebar) */}
+          {/* Public route */}
           <Route path="/" element={<Login />} />
 
-          {/* Any other route will show the sidebar */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/transaction" element={<Transaction />} />
-          <Route path="/yourvendo" element={<YourVendo />} />
+          {/* Protected routes */}
+          <Route 
+            path="/dashboard" 
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/transaction" 
+            element={
+              <PrivateRoute>
+                <Transaction />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/yourvendo" 
+            element={
+              <PrivateRoute>
+                <YourVendo />
+              </PrivateRoute>
+            } 
+          />
         </Routes>
       </div>
     </div>
